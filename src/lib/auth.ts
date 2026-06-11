@@ -4,6 +4,11 @@ import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
+  // In production AUTH_SECRET must be set (NextAuth throws without it).
+  // The fallback only exists so local dev works straight from .env.example.
+  secret:
+    process.env.AUTH_SECRET ||
+    (process.env.NODE_ENV !== "production" ? "moneymate-dev-secret" : undefined),
   session: { strategy: "jwt" },
   pages: { signIn: "/login" },
   providers: [

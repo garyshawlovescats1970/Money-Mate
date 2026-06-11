@@ -18,14 +18,17 @@ affiliate commission on deal click-throughs via the `/go/[dealId]` pipeline.
 ## Local development
 
 ```bash
-cp .env.example .env        # then fill in ANTHROPIC_API_KEY, AUTH_SECRET, ADMIN_KEY
+cp .env.example .env        # add ANTHROPIC_API_KEY for the coach/audit; rest works as-is
 npm install                 # runs prisma generate via postinstall
 npm run db:push             # create the SQLite schema
 npm run db:seed             # load deals.json into the Deal table
 npm run dev
 ```
 
-Generate `AUTH_SECRET` with `openssl rand -base64 32`.
+`AUTH_SECRET` is optional in dev (a dev-only fallback is used) but required in
+production — generate one with `openssl rand -base64 32`. Without
+`ANTHROPIC_API_KEY` everything works except the coach and bill audit, which
+show a friendly error.
 
 ## Tests
 
@@ -42,19 +45,11 @@ Set the env vars: `DATABASE_URL` (Postgres), `ANTHROPIC_API_KEY`, `AUTH_SECRET`,
 
 The default Prisma schema targets SQLite for dev; production uses
 `prisma/schema.postgres.prisma` (identical models, postgres provider).
-Set the platform **build command** to:
-
-```bash
-npm run build:postgres
-```
-
-which runs `prisma generate` + `prisma db push` against the Postgres schema
-and then `next build`. Seed the deals once after the first deploy:
-
-```bash
-DATABASE_URL=<postgres-url> npx prisma generate --schema=prisma/schema.postgres.prisma
-DATABASE_URL=<postgres-url> node prisma/seed.mjs
-```
+`vercel.json` and `railway.json` already set the build command to
+`npm run build:postgres`, which runs `prisma generate` + `prisma db push`
+against the Postgres schema, seeds `deals.json` (idempotent upsert — note
+this re-asserts the JSON over any manual DB edits on each deploy), then
+`next build`. No manual seeding step is needed.
 
 ## Operating notes
 
