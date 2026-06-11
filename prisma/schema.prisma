@@ -1,0 +1,71 @@
+// Dev/test schema (SQLite). Production uses prisma/schema.postgres.prisma —
+// identical models, postgresql provider. Keep both files in sync.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                    String    @id @default(cuid())
+  email                 String    @unique
+  passwordHash          String
+  createdAt             DateTime  @default(now())
+  newsletterOptIn       Boolean   @default(false)
+  newsletterConfirmedAt DateTime?
+  moneyState            MoneyState?
+  clicks                Click[]
+  coachCalls            CoachCall[]
+}
+
+model MoneyState {
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  json      String
+  updatedAt DateTime @updatedAt
+}
+
+model Deal {
+  id         String   @id // slug
+  cat        String
+  provider   String
+  title      String
+  value      String
+  detail     String
+  url        String
+  hot        Boolean  @default(false)
+  sortOrder  Int      @default(0)
+  active     Boolean  @default(true)
+  verifiedAt DateTime
+  clicks     Click[]
+}
+
+model Click {
+  id        String   @id @default(cuid())
+  dealId    String
+  deal      Deal     @relation(fields: [dealId], references: [id], onDelete: Cascade)
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  createdAt DateTime @default(now())
+}
+
+model CoachCall {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@index([userId, createdAt])
+}
+
+model NewsletterSignup {
+  id          String    @id @default(cuid())
+  email       String    @unique
+  token       String    @unique
+  createdAt   DateTime  @default(now())
+  confirmedAt DateTime?
+}

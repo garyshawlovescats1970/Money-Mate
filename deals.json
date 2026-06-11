@@ -1,0 +1,93 @@
+{
+  "verified": "2026-06-11",
+  "deals": [
+    {
+      "id": "octopus-energy-referral",
+      "cat": "Energy",
+      "provider": "Octopus Energy",
+      "title": "£50 credit when you switch via a referral link",
+      "value": "£50",
+      "detail": "Octopus regularly tops the Citizens Advice service table and switching takes about ten minutes. Credit lands on your account after your first bill.",
+      "url": "https://octopus.energy/",
+      "hot": false,
+      "sortOrder": 10
+    },
+    {
+      "id": "first-direct-switch",
+      "cat": "Banking",
+      "provider": "first direct",
+      "title": "£175 to switch your current account",
+      "value": "£175",
+      "detail": "Use the Current Account Switch Service, pay in £1,000 within three months and the bonus follows. Consistently one of the best-rated banks for service.",
+      "url": "https://www.firstdirect.com/",
+      "hot": true,
+      "sortOrder": 20
+    },
+    {
+      "id": "natwest-switch",
+      "cat": "Banking",
+      "provider": "NatWest",
+      "title": "£180 bank switch incentive",
+      "value": "£180",
+      "detail": "Switch with CASS, deposit £1,250 and log in to the app to qualify. Offers like this come and go — check the closing date before you start.",
+      "url": "https://www.natwest.com/",
+      "hot": false,
+      "sortOrder": 30
+    },
+    {
+      "id": "chip-easy-access",
+      "cat": "Savings",
+      "provider": "Chip",
+      "title": "Easy-access saver paying near the top of the market",
+      "value": "4.80% AER",
+      "detail": "Variable rate, FSCS protected, move money out whenever you like. Rates change fast — confirm the live rate before opening.",
+      "url": "https://getchip.uk/",
+      "hot": false,
+      "sortOrder": 40
+    },
+    {
+      "id": "trading212-cash-isa",
+      "cat": "Savings",
+      "provider": "Trading 212",
+      "title": "Cash ISA with a market-leading variable rate",
+      "value": "5.00% AER",
+      "detail": "Tax-free interest, flexible withdrawals, FSCS protected. The headline rate can include a short-term bonus — read the terms.",
+      "url": "https://www.trading212.com/",
+      "hot": true,
+      "sortOrder": 50
+    },
+    {
+      "id": "hyperoptic-broadband",
+      "cat": "Broadband",
+      "provider": "Hyperoptic",
+      "title": "Full-fibre 150Mb from around £20/mo with no mid-contract rises",
+      "value": "£20/mo",
+      "detail": "If you can get it in your building it beats most big-name deals. No setup fee on most plans and contracts without annual price hikes.",
+      "url": "https://www.hyperoptic.com/",
+      "hot": false,
+      "sortOrder": 60
+    },
+    {
+      "id": "smarty-sim",
+      "cat": "Mobile",
+      "provider": "SMARTY",
+      "title": "Unlimited data SIM around £16/mo, one-month rolling",
+      "value": "£16/mo",
+      "detail": "Runs on the Three network with no contract lock-in and no mid-contract price rises. Keep your number — switching takes one text.",
+      "url": "https://smarty.co.uk/",
+      "hot": false,
+      "sortOrder": 70
+    },
+    {
+      "id": "giffgaff-sim",
+      "cat": "Mobile",
+      "provider": "giffgaff",
+      "title": "25GB goodybag for £10/mo, no contract",
+      "value": "£10/mo",
+      "detail": "Runs on O2. Most people on big-network contracts out of their minimum term can halve their bill with a SIM-only move like this.",
+      "url": "https://www.giffgaff.com/",
+      "hot": false,
+      "sortOrder": 80
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0a0d14;
+  --color-panel: #121624;
+  --color-raised: #171c2e;
+  --color-edge: #232a3f;
+  --color-ink: #edeff7;
+  --color-muted: #8a91a8;
+  --color-mint: #3ddc97;
+  --color-coral: #ff6b7a;
+  --color-brand-a: #8b7cff;
+  --color-brand-b: #5b8cff;
+
+  --font-sans: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-spline-mono), ui-monospace, monospace;
+
+  --radius-panel: 16px;
+}
+
+html {
+  background: var(--color-bg);
+  color-scheme: dark;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Every number, eyebrow, tag and badge is tabular mono — the visual signature. */
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-muted);
+}
+
+.panel {
+  background: var(--color-panel);
+  border: 1px solid var(--color-edge);
+  border-radius: var(--radius-panel);
+}
+
+.panel-raised {
+  background: var(--color-raised);
+  border: 1px solid var(--color-edge);
+  border-radius: var(--radius-panel);
+}
+
+.brand-gradient {
+  background-image: linear-gradient(135deg, #8b7cff, #5b8cff);
+}
+
+.brand-text {
+  background-image: linear-gradient(135deg, #8b7cff, #5b8cff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Hero card with a 1px gradient border. */
+.hero-border {
+  position: relative;
+  border-radius: var(--radius-panel);
+  background: var(--color-raised);
+}
+.hero-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, #8b7cff, #5b8cff);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.btn-primary {
+  background-image: linear-gradient(135deg, #8b7cff, #5b8cff);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 12px;
+  transition: transform 120ms ease, opacity 120ms ease;
+}
+.btn-primary:active {
+  transform: scale(0.97);
+}
+.btn-primary:disabled {
+  opacity: 0.45;
+  transform: none;
+}
+
+.chip {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-edge);
+  color: var(--color-muted);
+  padding: 0.375rem 0.875rem;
+  transition: transform 120ms ease;
+  white-space: nowrap;
+}
+.chip:active {
+  transform: scale(0.96);
+}
+.chip[data-active="true"] {
+  background-image: linear-gradient(135deg, #8b7cff, #5b8cff);
+  color: #fff;
+  border-color: transparent;
+}
+
+.field {
+  background: var(--color-bg);
+  border: 1px solid var(--color-edge);
+  border-radius: 12px;
+  color: var(--color-ink);
+  padding: 0.625rem 0.875rem;
+  width: 100%;
+  outline: none;
+}
+.field:focus {
+  border-color: #8b7cff;
+}
+.field::placeholder {
+  color: var(--color-muted);
+  opacity: 0.7;
+}
+
+.bar-track {
+  background: var(--color-bg);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background-image: linear-gradient(135deg, #8b7cff, #5b8cff);
+  transition: width 400ms ease;
+}
+
+.tabbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(10, 13, 20, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-top: 1px solid var(--color-edge);
+  padding-bottom: env(safe-area-inset-bottom);
+  z-index: 50;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
